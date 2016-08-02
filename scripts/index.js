@@ -158,7 +158,7 @@ function updateScore(){
 			blueScore--;
 		}
 		if (color === COLOR_BLACK){
-			$(this).css('color', 'white')});
+			$(this).css('color', 'white');
 		}
 	});
 	//subtract 1 for non-starting team
