@@ -129,10 +129,9 @@ function clicked(value) {
 		//guessers mode
 		var word = wordsSelected[value];
 		if (!document.getElementById("confirm").checked || window.confirm("Are sure you want to select '" + word + "'?")) {
-				document.getElementById(value).style.backgroundColor = teams[value];
-				if (teams[value] == COLOR_BLACK) {
-					document.getElementById(value).style.color = COLOR_WHITE;
-				}
+			document.getElementById(value).style.backgroundColor = teams[value];
+			if (teams[value] == COLOR_BLACK) {
+				document.getElementById(value).style.color = COLOR_WHITE;
 			}
 		}
 		//update score
@@ -156,7 +155,7 @@ function rgb2hex(rgb) {
 function updateScore(){
 	var blueScore = STARTING_SCORE;
 	var redScore = STARTING_SCORE;
-	$('div.word').each(function(){
+	$('div.word').each(function() {
 		var color = rgb2hex($(this).css('background-color'));
 		if (color === COLOR_RED){
 			redScore--;
