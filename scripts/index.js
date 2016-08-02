@@ -17,6 +17,7 @@ var COLOR_YELLOW = "#eeee33";
 var COLOR_BLUE = "#3333aa";
 var COLOR_BLACK = "#333333";
 var COLOR_GREEN = "#33aa33";
+var COLOR_WHITE = "ffffff";
 
 //init
 $( "#seed" ).keyup(function() {
@@ -123,13 +124,13 @@ function clicked(value) {
 			if (window.confirm("Are sure you want to select '" + word + "'?")) {
 				document.getElementById(value).style.backgroundColor = teams[value];
 				if (teams[value] == COLOR_BLACK) {
-					document.getElementById(value).style.color = "white";
+					document.getElementById(value).style.color = COLOR_WHITE;
 				}
 			}
 		} else {
 			document.getElementById(value).style.backgroundColor = teams[value];
 			if (teams[value] == COLOR_BLACK) {
-				document.getElementById(value).style.color = "white";
+				document.getElementById(value).style.color = COLOR_WHITE;
 			}
 		}
 		//update score
@@ -145,10 +146,10 @@ function updateScore(){
 	var redScore = 9;
 	$('div.word').each(function(){
 		var color = $(this).css('background-color');
-		if (color === 'rgb(0, 238, 238)'){
+		if (color === COLOR_RED){
 			blueScore--;
 		}
-		if (color === 'rgb(255, 0, 0)'){
+		if (color === COLOR_BLUE){
 			redScore--;
 		}
 	});
@@ -169,7 +170,7 @@ function spyMaster() {
 	for (var i = 0; i < NUMBER_OF_WORDS; i++) {
 		document.getElementById(i).style.backgroundColor = teams[i];
 		if (teams[i] == COLOR_BLACK) {
-			document.getElementById(i).style.color = "white";
+			document.getElementById(i).style.color = COLOR_WHITE;
 		}
 	}
 }
