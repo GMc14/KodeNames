@@ -157,11 +157,24 @@ function updateScore(){
 	$('#redScore').text(redScore);
 	$('#blueScore').text(blueScore);
 }
-
-function spyMaster() {
+function reset() {
 	spyMasterMode = true;
 	for (var i = 0; i < NUMBER_OF_WORDS; i++) {
-		document.getElementById(i).className += " "+teams[i];
+		document.getElementById(i).className = "word";
+	}
+}
+
+function spyMaster() {
+	if (spyMasterMode) {
+		spyMasterMode = false;
+		for (var i = 0; i < NUMBER_OF_WORDS; i++) {
+			document.getElementById(i).className = "word";
+		}
+	} else {
+		spyMasterMode = true;
+		for (var i = 0; i < NUMBER_OF_WORDS; i++) {
+			document.getElementById(i).className += " "+teams[i];
+		}	
 	}
 }
 
