@@ -3,6 +3,11 @@ a:visited {color: black;}
 a:hover {color: black;}   
 a:active {color: black;}  
 
+a.selected:link {color: red;}  
+a.selected:visited {color: yellow;} 
+a.selected:hover {color: blue;}   
+a.selected:active {color: green;}  
+
 html {
 	font-family : "Verdana";
 }
@@ -104,20 +109,40 @@ button, input, span#first {
  
 }
 
+.blackTeam{
+	color: orange;
+}
+.redTeam{
+	color: red;
+}
+.blueTeam{
+	color: blue;
+}
+
 .redStarts{
-	border-left: #880000;
-	border-left-style: 10px;
+	border-left: #aa3333;
+	border-style: solid;
+	border-width: 0px 0px 0px 10px;
 }
 .blueStarts{
-	border-left: #000088;
-	border-left-style: 10px;
+	border-left: #3333aa;
+	border-style: solid;
+	border-width: 0px 0px 0px 10px;
 }
 
 #redScore{
-	color: #880000;
-	font-size: 23px;
+	color: #aa3333;
+	font-size: 25px;
 }
 #blueScore{
-	color: #000088;
-	font-size: 23px;
+	color: #3333aa;
+	font-size: 25px;
 }
+
+/*
+var COLOR_RED = "#aa3333";
+var COLOR_YELLOW = "#eeee33";
+var COLOR_BLUE = "#3333aa";
+var COLOR_BLACK = "#333333";
+var COLOR_GREEN = "#33aa33";
+*/
