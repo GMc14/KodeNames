@@ -19,7 +19,6 @@ var COLOR_YELLOW = "#eeee33";
 var COLOR_BLUE = "#3333aa";
 var COLOR_BLACK = "#333333";
 var COLOR_GREEN = "#33aa33";
-var COLOR_WHITE = "#ffffff";
 
 //init
 $( "#seed" ).keyup(function() {
@@ -128,18 +127,13 @@ function clicked(value) {
 	if (!spyMasterMode) {
 		//guessers mode
 		var word = wordsSelected[value];
-		if (!document.getElementById("confirm").checked || window.confirm("Are sure you want to select '" + word + "'?")) {
-			document.getElementById(value).style.backgroundColor = teams[value];
-			if (teams[value] == COLOR_BLACK) {
-				document.getElementById(value).style.color = COLOR_WHITE;
-			}
-		}
-		//update score
-		updateScore();
 	} else {
 		//spymaster mode
 		document.getElementById(value).style.backgroundColor = COLOR_GREEN;
 	}
+	
+	//update score
+	updateScore();
 }
 function rgb2hex(rgb) {
      if (  rgb.search("rgb") == -1 ) {
@@ -163,6 +157,9 @@ function updateScore(){
 		if (color === COLOR_BLUE){
 			blueScore--;
 		}
+		if (color === COLOR_BLACK){
+			$(this).css('color', 'white')});
+		}
 	});
 	//subtract 1 for non-starting team
 	if (!EQUAL_TEAMS) {
@@ -177,14 +174,7 @@ function updateScore(){
 }
 
 function spyMaster() {
-	//TODO: randomize or organize tiles for easier comparing
 	spyMasterMode = true;
-	for (var i = 0; i < NUMBER_OF_WORDS; i++) {
-		document.getElementById(i).style.backgroundColor = teams[i];
-		if (teams[i] == COLOR_BLACK) {
-			document.getElementById(i).style.color = COLOR_WHITE;
-		}
-	}
 }
 
 function shuffle(array) {
