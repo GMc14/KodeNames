@@ -127,7 +127,7 @@ function clicked(value) {
  		}
 	} else {
 		//spymaster mode
-		document.getElementById(value).className += " "+teams[value];
+		document.getElementById(value).className = "word selected "+teams[value];
 	}
 	
 	//update score
@@ -161,7 +161,7 @@ function updateScore(){
 function spyMaster() {
 	spyMasterMode = true;
 	for (var i = 0; i < NUMBER_OF_WORDS; i++) {
-		document.getElementById(i).className += teams[i];
+		document.getElementById(i).className += " "+teams[i];
 	}
 }
 
