@@ -162,7 +162,7 @@ function updateScore(){
 function spyMaster() {
 	spyMasterMode = true;
 	for (var i = 0; i < NUMBER_OF_WORDS; i++) {
-		document.getElementById(i).className = teams[i];
+		document.getElementById(i).className += teams[i];
 	}
 }
 
