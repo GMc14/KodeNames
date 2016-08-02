@@ -158,7 +158,7 @@ function updateScore(){
 	$('#blueScore').text(blueScore);
 }
 function reset() {
-	spyMasterMode = true;
+	spyMasterMode = false;
 	for (var i = 0; i < NUMBER_OF_WORDS; i++) {
 		document.getElementById(i).className = "word";
 	}
@@ -166,10 +166,7 @@ function reset() {
 
 function spyMaster() {
 	if (spyMasterMode) {
-		spyMasterMode = false;
-		for (var i = 0; i < NUMBER_OF_WORDS; i++) {
-			document.getElementById(i).className = "word";
-		}
+		reset();
 	} else {
 		spyMasterMode = true;
 		for (var i = 0; i < NUMBER_OF_WORDS; i++) {
