@@ -122,13 +122,13 @@ function clicked(value) {
 		if (document.getElementById("confirm").checked) {
 			if (window.confirm("Are sure you want to select '" + word + "'?")) {
 				document.getElementById(value).style.backgroundColor = teams[value];
-				if (teams[value] == "black") {
+				if (teams[value] == COLOR_BLACK) {
 					document.getElementById(value).style.color = "white";
 				}
 			}
 		} else {
 			document.getElementById(value).style.backgroundColor = teams[value];
-			if (teams[value] == "black") {
+			if (teams[value] == COLOR_BLACK) {
 				document.getElementById(value).style.color = "white";
 			}
 		}
@@ -168,7 +168,7 @@ function spyMaster() {
 	spyMasterMode = true;
 	for (var i = 0; i < NUMBER_OF_WORDS; i++) {
 		document.getElementById(i).style.backgroundColor = teams[i];
-		if (teams[i] == "black") {
+		if (teams[i] == COLOR_BLACK) {
 			document.getElementById(i).style.color = "white";
 		}
 	}
