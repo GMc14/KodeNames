@@ -127,7 +127,7 @@ function clicked(value) {
  		}
 	} else {
 		//spymaster mode
-		document.getElementById(value).className = "word selected "+teams[value];
+		document.getElementById(value).className = "word "+teams[value]+"Selected";
 	}
 	
 	//update score
