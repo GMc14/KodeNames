@@ -3,10 +3,10 @@ a:visited {color: black;}
 a:hover {color: black;}   
 a:active {color: black;}  
 
-div.selected div a:link {color: red;}  
-div.selected div a:visited {color: yellow;} 
-div.selected div a:hover {color: blue;}   
-div.selected div a:active {color: green;}  
+div.blackTeam div a:link {color: white;}  
+div.blackTeam div a:visited {color: white;} 
+div.blackTeam div a:hover {color: white;}   
+div.blackTeam div a:active {color: white;}  
 
 html {
 	font-family : "Verdana";
@@ -109,24 +109,12 @@ button, input, span#first {
  
 }
 
-.blackTeam{
-	color: orange;
-}
-.redTeam{
-	color: red;
-}
-.blueTeam{
-	color: blue;
-}
-
 .redStarts{
 	border-left: #aa3333;
-	border-style: solid;
 	border-width: 0px 0px 0px 10px;
 }
 .blueStarts{
 	border-left: #3333aa;
-	border-style: solid;
 	border-width: 0px 0px 0px 10px;
 }
 
