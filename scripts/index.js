@@ -162,7 +162,7 @@ function updateScore(){
 			blueScore--;
 		}
 		if (color === COLOR_BLACK){
-			$(this).css('color', 'white');
+			$(this).("cssText", "background-color: red !important;");
 		}
 	});
 	//subtract 1 for non-starting team
@@ -179,6 +179,9 @@ function updateScore(){
 
 function spyMaster() {
 	spyMasterMode = true;
+	for (var i = 0; i < NUMBER_OF_WORDS; i++) {
+		document.getElementById(i).style.backgroundColor = teams[i];
+	}
 }
 
 function shuffle(array) {
