@@ -17,7 +17,7 @@ var COLOR_YELLOW = "#eeee33";
 var COLOR_BLUE = "#3333aa";
 var COLOR_BLACK = "#333333";
 var COLOR_GREEN = "#33aa33";
-var COLOR_WHITE = "ffffff";
+var COLOR_WHITE = "#ffffff";
 
 //init
 $( "#seed" ).keyup(function() {
@@ -140,12 +140,22 @@ function clicked(value) {
 		document.getElementById(value).style.backgroundColor = COLOR_GREEN;
 	}
 }
-
+function rgb2hex(rgb) {
+     if (  rgb.search("rgb") == -1 ) {
+          return rgb;
+     } else {
+          rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
+          function hex(x) {
+               return ("0" + parseInt(x).toString(16)).slice(-2);
+          }
+          return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]); 
+     }
+}
 function updateScore(){
 	var blueScore = 9;
 	var redScore = 9;
 	$('div.word').each(function(){
-		var color = $(this).css('background-color');
+		var color = rgb2hex($(this).css('background-color'));
 		if (color === COLOR_RED){
 			blueScore--;
 		}
