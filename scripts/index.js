@@ -134,26 +134,16 @@ function clicked(value) {
 	//update score
 	updateScore();
 }
-function rgb2hex(rgb) {
-     if (  rgb.search("rgb") == -1 ) {
-          return rgb;
-     } else {
-          rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
-          function hex(x) {
-               return ("0" + parseInt(x).toString(16)).slice(-2);
-          }
-          return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]); 
-     }
-}
+
 function updateScore(){
 	var blueScore = STARTING_SCORE;
 	var redScore = STARTING_SCORE;
 	$('div.word').each(function() {
 		var className = $(this).className;
-		if (className.includes(COLOR_RED)){
+		if ($(this).hasClass(COLOR_RED)){
 			redScore--;
 		}
-		if (className.includes(COLOR_BLUE)){
+		if ($(this).hasClass(COLOR_BLUE)){
 			blueScore--;
 		}
 	});
