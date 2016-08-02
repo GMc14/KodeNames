@@ -3,10 +3,10 @@ a:visited {color: black;}
 a:hover {color: black;}   
 a:active {color: black;}  
 
-a.selected:link {color: red;}  
-a.selected:visited {color: yellow;} 
-a.selected:hover {color: blue;}   
-a.selected:active {color: green;}  
+div.selected div a:link {color: red;}  
+div.selected div a:visited {color: yellow;} 
+div.selected div a:hover {color: blue;}   
+div.selected div a:active {color: green;}  
 
 html {
 	font-family : "Verdana";
