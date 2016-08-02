@@ -8,6 +8,23 @@ div.blackTeam div a:visited {color: white;}
 div.blackTeam div a:hover {color: white;}   
 div.blackTeam div a:active {color: white;}  
 
+
+div.noTeam {
+background-color:gray;	
+}
+
+div.blackTeam {
+background-color:black;		
+} 
+
+div.blueTeam {
+background-color:blue;		
+} 
+
+div.redTeam {
+background-color:red;		
+} 
+
 html {
 	font-family : "Verdana";
 }
