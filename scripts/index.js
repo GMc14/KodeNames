@@ -14,11 +14,11 @@ var EQUAL_TEAMS = false;
 var sessionData = [];
 var customData = [];
 
-var COLOR_RED = "COLOR_RED";
-var COLOR_YELLOW = "COLOR_YELLOW";
-var COLOR_BLUE = "COLOR_BLUE";
-var COLOR_GREEN = "COLOR_GREEN";
-var COLOR_BLACK = "COLOR_BLACK";
+var COLOR_RED = "redTeam";
+var COLOR_YELLOW = "noTeam";
+var COLOR_BLUE = "blueTeam";
+var COLOR_GREEN = "noTeam";
+var COLOR_BLACK = "blackTeam";
 
 //init
 $( "#seed" ).keyup(function() {
