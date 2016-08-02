@@ -136,8 +136,8 @@ function clicked(value) {
 }
 
 function updateScore(){
-	var blueScore = STARTING_SCORE;
-	var redScore = STARTING_SCORE;
+	var blueScore = STARTING_TILES;
+	var redScore = STARTING_TILES;
 	$('div.word').each(function() {
 		var className = $(this).className;
 		if ($(this).hasClass(COLOR_RED)){
