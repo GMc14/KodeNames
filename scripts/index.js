@@ -12,11 +12,11 @@ var spyMasterMode = false;
 var sessionData = [];
 var customData = [];
 
-var COLOR_RED = "#ff0000";
-var COLOR_YELLOW = "#ffff00";
-var COLOR_BLUE = "#00eeee";
+var COLOR_RED = "#33aaaa";
+var COLOR_YELLOW = "#aaaa33";
+var COLOR_BLUE = "#3333aa";
 var COLOR_BLACK = "#808080";
-var COLOR_GREEN = "#009000";
+var COLOR_GREEN = "#33aa33";
 
 //init
 $( "#seed" ).keyup(function() {
