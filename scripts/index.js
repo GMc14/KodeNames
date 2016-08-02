@@ -79,13 +79,12 @@ function createNewGame() {
 		wordsSelected.push(word);
 		trs[i % 5] += "<div class=\"word\" id=\'" + i + "\' onclick=\"clicked(\'" + i + "\')\"><div><a href=\"#\"><span class=\"ada\"></span>" + word + "</a></div></div>";
 	}
-	//<a href="#"><span class="ada">Washington stimulates economic growth </span>Read me</a>
 	for (var i = 0; i < trs.length; i++) {
 		document.getElementById("board").innerHTML += '<div class="row">' + trs[i] + '</div>'
 	}
 	var neutrals = NUMBER_OF_WORDS
 	//create teams
-	for (var i = 0; i < STARTING_SCORE-1; i++) {
+	for (var i = 0; i < STARTING_TILES-1; i++) {
 		teams.push(COLOR_RED);
 		teams.push(COLOR_BLUE);
 		neutrals--;
