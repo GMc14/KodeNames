@@ -9,6 +9,15 @@ div.blackTeam div a:hover {color: white;}
 div.blackTeam div a:active {color: white;}  
 
 
+div.selected div a:link {text-decoration: line-through;}  
+div.selected div a:visited {text-decoration: line-through;} 
+div.selected div a:hover {text-decoration: line-through;}   
+div.selected div a:active {text-decoration: line-through;}  
+
+div.selected {
+text-decoration: gray;
+}
+
 div.noTeam {
 background-color:gray;	
 }
