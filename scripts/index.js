@@ -10,15 +10,15 @@ var teams = [];
 var NUMBER_OF_WORDS = 25;
 var STARTING_SCORE = 9;
 var spyMasterMode = false;
-var EQUAL_TEAMS = true;
+var EQUAL_TEAMS = false;
 var sessionData = [];
 var customData = [];
 
-var COLOR_RED = "#aa3333";
-var COLOR_YELLOW = "#eeee33";
-var COLOR_BLUE = "#3333aa";
-var COLOR_BLACK = "#333333";
-var COLOR_GREEN = "#33aa33";
+var COLOR_RED = "COLOR_RED";
+var COLOR_YELLOW = "COLOR_YELLOW";
+var COLOR_BLUE = "COLOR_BLUE";
+var COLOR_GREEN = "COLOR_GREEN";
+var COLOR_BLACK = "COLOR_BLACK";
 
 //init
 $( "#seed" ).keyup(function() {
@@ -97,14 +97,10 @@ function createNewGame() {
 	if (!EQUAL_TEAMS) {
 		if (Math.floor(Math.random() * data.length) % 2 === 0) {
 			teams.push(COLOR_RED);
-			// document.getElementById("team").style.color = COLOR_RED;
-			// document.getElementById("team").innerHTML = "RED";
 			$('#board').addClass('redStarts').removeClass('blueStarts');
 	
 		} else {
 			teams.push(COLOR_BLUE);
-			// document.getElementById("team").style.color = COLOR_BLUE;
-			// document.getElementById("team").innerHTML = "BLUE";
 			$('#board').addClass('blueStarts').removeClass('redStarts');
 		}
 		neutrals--;
@@ -128,12 +124,11 @@ function clicked(value) {
 		//guessers mode
 		var word = wordsSelected[value];
 		if (!document.getElementById("confirm").checked || window.confirm("Are sure you want to select '" + word + "'?")) {
-			document.getElementById(value).style.backgroundColor = teams[value];
-			document.getElementById(value).className += " selected";
+			document.getElementById(value).className += " "+teams[value];
  		}
 	} else {
 		//spymaster mode
-		document.getElementById(value).style.backgroundColor = COLOR_GREEN;
+		document.getElementById(value).className += " "+COLOR_GREEN;
 	}
 	
 	//update score
@@ -154,15 +149,12 @@ function updateScore(){
 	var blueScore = STARTING_SCORE;
 	var redScore = STARTING_SCORE;
 	$('div.word').each(function() {
-		var color = rgb2hex($(this).css('background-color'));
-		if (color === COLOR_RED){
+		var className = $(this).className;
+		if (className.includes(COLOR_RED)){
 			redScore--;
 		}
-		if (color === COLOR_BLUE){
+		if (className.includes(COLOR_BLUE)){
 			blueScore--;
-		}
-		if (color === COLOR_BLACK){
-			$(this).css("cssText", "color: white !important;");
 		}
 	});
 	//subtract 1 for non-starting team
@@ -180,7 +172,7 @@ function updateScore(){
 function spyMaster() {
 	spyMasterMode = true;
 	for (var i = 0; i < NUMBER_OF_WORDS; i++) {
-		document.getElementById(i).style.backgroundColor = teams[i];
+		document.getElementById(i).className = teams[i];
 	}
 }
 
