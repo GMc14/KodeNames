@@ -107,11 +107,11 @@ button, input, span#first {
 
 .redStarts{
 	border-left: #880000;
-	border-left-style: solid;
+	border-left-style: 10px;
 }
 .blueStarts{
 	border-left: #000088;
-	border-left-style: solid;
+	border-left-style: 10px;
 }
 
 #redScore{
