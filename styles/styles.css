@@ -1,12 +1,17 @@
 a {color: black;}  
 div.blackTeam div a {color: white;}  
-div.noTeamSelected div a {color: black;}  
-div.blackTeamSelected div a {color: yellow;}  
-div.blueTeamSelected div a {color: blue;}  
-div.redTeamSelected div a {color: red;}  
+
+div.noTeamSelected div a {color: gray;
+	font-size: 12px;}  
+div.blackTeamSelected div a {color: yellow;
+	font-size: 12px;}  
+div.blueTeamSelected div a {color: blue;
+	font-size: 12px;}  
+div.redTeamSelected div a {color: red;
+	font-size: 12px;}  
 
 div.noTeamSelected  {
-background-color:gray;	
+background-color:white;	
 }
 div.blackTeamSelected  {
 background-color:black;		
