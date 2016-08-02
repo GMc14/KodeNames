@@ -8,7 +8,9 @@ Notes:
 var wordsSelected = [];
 var teams = [];
 var NUMBER_OF_WORDS = 25;
+var STARTING_SCORE = 9;
 var spyMasterMode = false;
+var EQUAL_TEAMS = true;
 var sessionData = [];
 var customData = [];
 
@@ -82,34 +84,40 @@ function createNewGame() {
 	for (var i = 0; i < trs.length; i++) {
 		document.getElementById("board").innerHTML += '<div class="row">' + trs[i] + '</div>'
 	}
-
+	var neutrals = NUMBER_OF_WORDS
 	//create teams
-	for (var i = 0; i < 8; i++) {
+	for (var i = 0; i < STARTING_SCORE; i++) {
 		teams.push(COLOR_RED);
 		teams.push(COLOR_BLUE);
+		neutrals--;
+		neutrals--;
 	}
 
-	// one extra for one of the teams
-	if (Math.floor(Math.random() * data.length) % 2 === 0) {
-		teams.push(COLOR_RED);
-		// document.getElementById("team").style.color = COLOR_RED;
-		// document.getElementById("team").innerHTML = "RED";
-		$('#board').addClass('redStarts').removeClass('blueStarts');
-
-	} else {
-		teams.push(COLOR_BLUE);
-		// document.getElementById("team").style.color = COLOR_BLUE;
-		// document.getElementById("team").innerHTML = "BLUE";
-		$('#board').addClass('blueStarts').removeClass('redStarts');
+	// maybe one extra for one of the teams
+	
+	if (!EQUAL_TEAMS) {
+		if (Math.floor(Math.random() * data.length) % 2 === 0) {
+			teams.push(COLOR_RED);
+			// document.getElementById("team").style.color = COLOR_RED;
+			// document.getElementById("team").innerHTML = "RED";
+			$('#board').addClass('redStarts').removeClass('blueStarts');
+	
+		} else {
+			teams.push(COLOR_BLUE);
+			// document.getElementById("team").style.color = COLOR_BLUE;
+			// document.getElementById("team").innerHTML = "BLUE";
+			$('#board').addClass('blueStarts').removeClass('redStarts');
+		}
+		neutrals--;
 	}
-
-	// add neturals 
-	for (var i = 0; i < 7; i++) {
-		teams.push(COLOR_YELLOW);
-	}
-
 	// push the assasin
 	teams.push(COLOR_BLACK)
+	neutrals--;
+	
+	// add neturals 
+	for (var i = 0; i < neutrals; i++) {
+		teams.push(COLOR_YELLOW);
+	}
 
 	//shuffle teams
 	shuffle(teams);
@@ -120,17 +128,11 @@ function clicked(value) {
 	if (!spyMasterMode) {
 		//guessers mode
 		var word = wordsSelected[value];
-		if (document.getElementById("confirm").checked) {
-			if (window.confirm("Are sure you want to select '" + word + "'?")) {
+		if (!document.getElementById("confirm").checked || window.confirm("Are sure you want to select '" + word + "'?")) {
 				document.getElementById(value).style.backgroundColor = teams[value];
 				if (teams[value] == COLOR_BLACK) {
 					document.getElementById(value).style.color = COLOR_WHITE;
 				}
-			}
-		} else {
-			document.getElementById(value).style.backgroundColor = teams[value];
-			if (teams[value] == COLOR_BLACK) {
-				document.getElementById(value).style.color = COLOR_WHITE;
 			}
 		}
 		//update score
@@ -152,24 +154,25 @@ function rgb2hex(rgb) {
      }
 }
 function updateScore(){
-	var blueScore = 9;
-	var redScore = 9;
+	var blueScore = STARTING_SCORE;
+	var redScore = STARTING_SCORE;
 	$('div.word').each(function(){
 		var color = rgb2hex($(this).css('background-color'));
 		if (color === COLOR_RED){
-			blueScore--;
+			redScore--;
 		}
 		if (color === COLOR_BLUE){
-			redScore--;
+			blueScore--;
 		}
 	});
 	//subtract 1 for non-starting team
-	if($('.redStarts') === 1){
-		redScore--;
-	} else {
-		blueScore--;
+	if (!EQUAL_TEAMS) {
+		if($('.redStarts') === 1){
+			redScore--;
+		} else {
+			blueScore--;
+		}
 	}
-
 	$('#redScore').text(redScore);
 	$('#blueScore').text(blueScore);
 }
