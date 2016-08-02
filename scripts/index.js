@@ -8,7 +8,7 @@ Notes:
 var wordsSelected = [];
 var teams = [];
 var NUMBER_OF_WORDS = 25;
-var STARTING_SCORE = 9;
+var STARTING_TILES = 9;
 var spyMasterMode = false;
 var EQUAL_TEAMS = false;
 var sessionData = [];
@@ -85,16 +85,15 @@ function createNewGame() {
 	}
 	var neutrals = NUMBER_OF_WORDS
 	//create teams
-	for (var i = 0; i < STARTING_SCORE; i++) {
+	for (var i = 0; i < STARTING_SCORE-1; i++) {
 		teams.push(COLOR_RED);
 		teams.push(COLOR_BLUE);
 		neutrals--;
 		neutrals--;
 	}
 
-	// maybe one extra for one of the teams
-	
-	if (!EQUAL_TEAMS) {
+	//one extra for one of the teams
+	if(!EQUAL_TEAMS){
 		if (Math.floor(Math.random() * data.length) % 2 === 0) {
 			teams.push(COLOR_RED);
 			$('#board').addClass('redStarts').removeClass('blueStarts');
@@ -105,6 +104,7 @@ function createNewGame() {
 		}
 		neutrals--;
 	}
+	
 	// push the assasin
 	teams.push(COLOR_BLACK)
 	neutrals--;
@@ -128,7 +128,7 @@ function clicked(value) {
  		}
 	} else {
 		//spymaster mode
-		document.getElementById(value).className += " "+COLOR_GREEN;
+		document.getElementById(value).className += " "+teams[value];
 	}
 	
 	//update score
