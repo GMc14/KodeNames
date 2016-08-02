@@ -1,22 +1,22 @@
-a:link {color: black;}  
-a:visited {color: black;} 
-a:hover {color: black;}   
-a:active {color: black;}  
+a {color: black;}  
+div.blackTeam div a {color: white;}  
+div.noTeamSelected div a {color: black;}  
+div.blackTeamSelected div a {color: yellow;}  
+div.blueTeamSelected div a {color: blue;}  
+div.redTeamSelected div a {color: red;}  
 
-div.blackTeam div a:link {color: white;}  
-div.blackTeam div a:visited {color: white;} 
-div.blackTeam div a:hover {color: white;}   
-div.blackTeam div a:active {color: white;}  
-
-
-div.selected div a:link {text-decoration: line-through;}  
-div.selected div a:visited {text-decoration: line-through;} 
-div.selected div a:hover {text-decoration: line-through;}   
-div.selected div a:active {text-decoration: line-through;}  
-
-div.selected {
-text-decoration: gray;
+div.noTeamSelected  {
+background-color:gray;	
 }
+div.blackTeamSelected  {
+background-color:black;		
+} 
+div.blueTeamSelected  {
+background-color:white;		
+} 
+div.redTeamSelected {
+background-color:white;		
+} 
 
 div.noTeam {
 background-color:gray;	
