@@ -127,6 +127,10 @@ function clicked(value) {
 	if (!spyMasterMode) {
 		//guessers mode
 		var word = wordsSelected[value];
+		if (!document.getElementById("confirm").checked || window.confirm("Are sure you want to select '" + word + "'?")) {
+			document.getElementById(value).style.backgroundColor = teams[value];
+			document.getElementById(value).className += " selected";
+ 		}
 	} else {
 		//spymaster mode
 		document.getElementById(value).style.backgroundColor = COLOR_GREEN;
