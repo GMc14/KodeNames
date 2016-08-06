@@ -10,7 +10,7 @@ var teams = [];
 var NUMBER_OF_WORDS = 25;
 var STARTING_TILES = 9;
 var spyMasterMode = false;
-var EQUAL_TEAMS = false;
+var EQUAL_TEAMS = true;
 var sessionData = [];
 var customData = [];
 
