@@ -12,5 +12,5 @@ To start new game, go to step 2.
 1. Im thinking of doing some async, but ill need to decide on a backend...
 2. CSS
 
-# Github Hosted Url
+# Github Hosted Url:
 https://gmc14.github.io/KodeNames/
