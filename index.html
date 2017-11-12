@@ -11,44 +11,34 @@
 </head>
 
 <body>
-  <a href="www.google.com" target="_blank">blank</a> <br />
+<!--   <a href="www.google.com" target="_blank">blank</a> <br />
 <a href="www.google.com" target="_new">new</a> <br />
 <a href="www.google.com" target="_self">self</a> <br />
 <a href="www.google.com" target="_parent">parent</a> <br />
 <a href="www.google.com" target="_top">top</a> <br />
-<a href="www.google.com" >none</a> <br />
-  
-<!--   <div>
+<a href="www.google.com" >none</a> <br /> -->    
+ <div>
     <div id='header'>
       <input type="text" id="seed" placeholder="seed" size="8" autofocus>
       <button onclick="fire()">Play Game</button>
+      <button onclick="reset()">Reset</button>
       <span id="redScore"></span>
       <span id="blueScore"></span>  
       <span>
         <button id="spymaster" onclick="spyMaster()">I am SpyMaster</button>
         <span id="confirmText">confirm popup?</span>
         <input type="checkbox" id="confirm">
-        <select id='gameMode'>
+        <select id='gameMode' onChange='fire()'>
           <option value="default">Default</option>
           <option value="2knouns">2K Nouns</option>
           <option value="movies">Top 200 Movies</option>
           <option value="custom">Custom Words</option>
+          <option value="xmas">Christmas</option>
         </select>
         <span id="google_translate_element"></span>
       </span>
     </div>
   </div>
-  <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
-  <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyA-FGvPcA4ACdzzggq_htZm4pZxUNILiTA",
-      authDomain: "codenames-ddd5e.firebaseapp.com",
-      databaseURL: "https://codenames-ddd5e.firebaseio.com",
-      storageBucket: "",
-    };
-    firebase.initializeApp(config);
-  </script>
   <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
   <script type="text/javascript">
   function googleTranslateElementInit() {
@@ -61,7 +51,6 @@
   <script src="scripts/data.js"></script>
   <script src="scripts/seedrandom.js"></script>
   <script src="scripts/index.js"></script>
-  <script src="scripts/analytics.js"></script> -->
   
 </body>
 </html>
