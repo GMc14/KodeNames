@@ -38,6 +38,9 @@ function fire() {
 		case 'movies':
 			sessionData = movieData.slice(0);
 			break;
+		case 'xmas':
+			sessionData = xmas.slice(0);
+			break;	
 		case 'custom':
 			if(customData.length === 0){
 				var customWordList = prompt("Please enter custom word list. The list will be saved until your refresh your browser. (The words MUST be delimanted by spaces). eg: cat dog mouse", "Enter words here");
