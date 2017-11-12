@@ -1,7 +1,48 @@
-a:link {color: black;}      /* unvisited link */
-a:visited {color: black;}   /* visited link */
-a:hover {color: black;}     /* mouse over link */
-a:active {color: black;}    /* selected link */
+/*
+var COLOR_RED = "#aa3333";
+var COLOR_BLUE = "#3333aa";
+*/
+
+a {color: black; text-decoration: none;}  
+div.blackTeam div a {color: white;}  
+
+div.noTeamSelected div a {color: gray;
+	font-size: 12px;}  
+div.blackTeamSelected div a {color: yellow;
+	font-size: 12px;}  
+div.blueTeamSelected div a {color: #3333aa;
+	font-size: 12px;}  
+div.redTeamSelected div a {color: #aa3333;
+	font-size: 12px;}  
+
+div.noTeamSelected  {
+background-color:white;	
+}
+div.blackTeamSelected  {
+background-color:black;		
+} 
+div.blueTeamSelected  {
+background-color:white;		
+} 
+div.redTeamSelected {
+background-color:white;		
+} 
+
+div.noTeam {
+background-color:gray;	
+}
+
+div.blackTeam {
+background-color:black;		
+} 
+
+div.blueTeam {
+background-color:#3333aa;		
+} 
+
+div.redTeam {
+background-color:#aa3333;		
+} 
 
 html {
 	font-family : "Verdana";
@@ -105,19 +146,21 @@ button, input, span#first {
 }
 
 .redStarts{
-	border-left: #880000;
-	border-left-style: solid;
+	border-left: #aa3333;
+	border-width: 0px 0px 0px 10px;
 }
 .blueStarts{
-	border-left: #000088;
-	border-left-style: solid;
+	border-left: #3333aa;
+	border-width: 0px 0px 0px 10px;
 }
 
 #redScore{
-	color: #880000;
-	font-size: 23px;
+	color: #aa3333;
+	font-size: 25px;
 }
 #blueScore{
-	color: #000088;
-	font-size: 23px;
+	color: #3333aa;
+	font-size: 25px;
 }
+
+

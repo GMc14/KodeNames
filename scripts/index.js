@@ -8,15 +8,17 @@ Notes:
 var wordsSelected = [];
 var teams = [];
 var NUMBER_OF_WORDS = 25;
+var STARTING_TILES = 9;
 var spyMasterMode = false;
+var EQUAL_TEAMS = true;
 var sessionData = [];
 var customData = [];
 
-var COLOR_RED = "#33aaaa";
-var COLOR_YELLOW = "#aaaa33";
-var COLOR_BLUE = "#3333aa";
-var COLOR_BLACK = "#808080";
-var COLOR_GREEN = "#33aa33";
+var COLOR_RED = "redTeam";
+var COLOR_YELLOW = "noTeam";
+var COLOR_BLUE = "blueTeam";
+var COLOR_GREEN = "noTeam";
+var COLOR_BLACK = "blackTeam";
 
 //init
 $( "#seed" ).keyup(function() {
@@ -80,38 +82,39 @@ function createNewGame() {
 		wordsSelected.push(word);
 		trs[i % 5] += "<div class=\"word\" id=\'" + i + "\' onclick=\"clicked(\'" + i + "\')\"><div><a href=\"#\"><span class=\"ada\"></span>" + word + "</a></div></div>";
 	}
-	//<a href="#"><span class="ada">Washington stimulates economic growth </span>Read me</a>
 	for (var i = 0; i < trs.length; i++) {
 		document.getElementById("board").innerHTML += '<div class="row">' + trs[i] + '</div>'
 	}
-
+	var neutrals = NUMBER_OF_WORDS
 	//create teams
-	for (var i = 0; i < 8; i++) {
+	for (var i = 0; i < STARTING_TILES-1; i++) {
 		teams.push(COLOR_RED);
 		teams.push(COLOR_BLUE);
+		neutrals--;
+		neutrals--;
 	}
 
-	// one extra for one of the teams
-	if (Math.floor(Math.random() * data.length) % 2 === 0) {
-		teams.push(COLOR_RED);
-		// document.getElementById("team").style.color = COLOR_RED;
-		// document.getElementById("team").innerHTML = "RED";
-		$('#board').addClass('redStarts').removeClass('blueStarts');
-
-	} else {
-		teams.push(COLOR_BLUE);
-		// document.getElementById("team").style.color = COLOR_BLUE;
-		// document.getElementById("team").innerHTML = "BLUE";
-		$('#board').addClass('blueStarts').removeClass('redStarts');
+	//one extra for one of the teams
+	if(!EQUAL_TEAMS){
+		if (Math.floor(Math.random() * data.length) % 2 === 0) {
+			teams.push(COLOR_RED);
+			$('#board').addClass('redStarts').removeClass('blueStarts');
+	
+		} else {
+			teams.push(COLOR_BLUE);
+			$('#board').addClass('blueStarts').removeClass('redStarts');
+		}
+		neutrals--;
 	}
-
-	// add neturals 
-	for (var i = 0; i < 7; i++) {
-		teams.push(COLOR_YELLOW);
-	}
-
+	
 	// push the assasin
 	teams.push(COLOR_BLACK)
+	neutrals--;
+	
+	// add neturals 
+	for (var i = 0; i < neutrals; i++) {
+		teams.push(COLOR_YELLOW);
+	}
 
 	//shuffle teams
 	shuffle(teams);
@@ -122,58 +125,56 @@ function clicked(value) {
 	if (!spyMasterMode) {
 		//guessers mode
 		var word = wordsSelected[value];
-		if (document.getElementById("confirm").checked) {
-			if (window.confirm("Are sure you want to select '" + word + "'?")) {
-				document.getElementById(value).style.backgroundColor = teams[value];
-				if (teams[value] == "black") {
-					document.getElementById(value).style.color = "white";
-				}
-			}
-		} else {
-			document.getElementById(value).style.backgroundColor = teams[value];
-			if (teams[value] == "black") {
-				document.getElementById(value).style.color = "white";
-			}
-		}
-		//update score
-		updateScore();
+		if (!document.getElementById("confirm").checked || window.confirm("Are sure you want to select '" + word + "'?")) {
+			document.getElementById(value).className += " "+teams[value];
+ 		}
 	} else {
 		//spymaster mode
-		document.getElementById(value).style.backgroundColor = COLOR_GREEN;
+		document.getElementById(value).className = "word "+teams[value]+"Selected";
 	}
+	
+	//update score
+	updateScore();
 }
 
 function updateScore(){
-	var blueScore = 9;
-	var redScore = 9;
-	$('div.word').each(function(){
-		var color = $(this).css('background-color');
-		if (color === 'rgb(0, 238, 238)'){
-			blueScore--;
-		}
-		if (color === 'rgb(255, 0, 0)'){
+	var blueScore = STARTING_TILES;
+	var redScore = STARTING_TILES;
+	$('div.word').each(function() {
+		var className = $(this).className;
+		if ($(this).hasClass(COLOR_RED)){
 			redScore--;
+		}
+		if ($(this).hasClass(COLOR_BLUE)){
+			blueScore--;
 		}
 	});
 	//subtract 1 for non-starting team
-	if($('.redStarts') === 1){
-		redScore--;
-	} else {
-		blueScore--;
+	if (!EQUAL_TEAMS) {
+		if($('.redStarts') === 1){
+			redScore--;
+		} else {
+			blueScore--;
+		}
 	}
-
 	$('#redScore').text(redScore);
 	$('#blueScore').text(blueScore);
 }
+function reset() {
+	spyMasterMode = false;
+	for (var i = 0; i < NUMBER_OF_WORDS; i++) {
+		document.getElementById(i).className = "word";
+	}
+}
 
 function spyMaster() {
-	//TODO: randomize or organize tiles for easier comparing
-	spyMasterMode = true;
-	for (var i = 0; i < NUMBER_OF_WORDS; i++) {
-		document.getElementById(i).style.backgroundColor = teams[i];
-		if (teams[i] == "black") {
-			document.getElementById(i).style.color = "white";
-		}
+	if (spyMasterMode) {
+		reset();
+	} else {
+		spyMasterMode = true;
+		for (var i = 0; i < NUMBER_OF_WORDS; i++) {
+			document.getElementById(i).className += " "+teams[i];
+		}	
 	}
 }
 
